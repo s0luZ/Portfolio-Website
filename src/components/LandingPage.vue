@@ -152,6 +152,14 @@ onMounted(() => {
 }
 
 @media (max-width: 768px) {
+  .landing-container {
+    padding: 1rem;
+  }
+
+  .particles-wrapper {
+    padding: 1rem;
+  }
+
   .copyright {
     bottom: 0.5rem;
     left: 1rem;
@@ -160,6 +168,20 @@ onMounted(() => {
 
   .nav-header h1 {
     font-size: 1.35rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-container {
+    padding: 0.75rem;
+  }
+
+  .particles-wrapper {
+    padding: 0.75rem;
+  }
+
+  .nav-header h1 {
+    font-size: 1.15rem;
   }
 }
 

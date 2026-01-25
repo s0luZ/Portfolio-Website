@@ -29,15 +29,12 @@
               <ul class="contact-list">
                 <li>
                   <span class="contact-label">Email</span>
-                  <a href="mailto:your@email.com" class="contact-link">your@email.com</a>
+                  <a href="mailto:2245land@gmail.com" class="contact-link">2245land@gmail.com</a>
                 </li>
-                <li>
-                  <span class="contact-label">LinkedIn</span>
-                  <a href="https://linkedin.com/in/yourprofile" class="contact-link" target="_blank" rel="noopener noreferrer">linkedin.com/in/yourprofile</a>
-                </li>
+                
                 <li>
                   <span class="contact-label">GitHub</span>
-                  <a href="https://github.com/yourusername" class="contact-link" target="_blank" rel="noopener noreferrer">github.com/yourusername</a>
+                  <a href="https://github.com/s0luZ" class="contact-link" target="_blank" rel="noopener noreferrer">github.com/s0luZ</a>
                 </li>
               </ul>
             </div>
@@ -66,6 +63,7 @@ onMounted(() => {
   display: flex;
   color: white;
   padding: 2rem;
+  overflow-x: hidden;
 }
 
 .main-content {
@@ -233,6 +231,21 @@ onMounted(() => {
 }
 
 @media (max-width: 768px) {
+  .landing-container {
+    padding: 1rem;
+  }
+
+  .particles-wrapper {
+    padding: 1rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .main-content {
+    height: calc(100vh - 2rem);
+    overflow: hidden;
+  }
+
   .copyright {
     bottom: 0.5rem;
     left: 1rem;
@@ -249,10 +262,33 @@ onMounted(() => {
     width: 100%;
     margin-top: 2rem;
     max-height: none;
+    overflow-y: visible;
+  }
+
+  .about-me-wrapper {
+    padding-right: 1rem;
   }
 
   .contact-list li {
     align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-container {
+    padding: 0.75rem;
+  }
+
+  .particles-wrapper {
+    padding: 0.75rem;
+  }
+
+  .main-content {
+    height: calc(100vh - 1.5rem);
+  }
+
+  .nav-header h1 {
+    font-size: 1.15rem;
   }
 }
 

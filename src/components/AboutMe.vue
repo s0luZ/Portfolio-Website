@@ -79,6 +79,7 @@ onMounted(() => {
   display: flex;
   color: white;
   padding: 2rem;
+  overflow-x: hidden;
 }
 
 .main-content {
@@ -216,6 +217,21 @@ onMounted(() => {
 }
 
 @media (max-width: 768px) {
+  .landing-container {
+    padding: 1rem;
+  }
+
+  .particles-wrapper {
+    padding: 1rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .main-content {
+    height: calc(100vh - 2rem);
+    overflow: hidden;
+  }
+
   .copyright {
     bottom: 0.5rem;
     left: 1rem;
@@ -225,12 +241,37 @@ onMounted(() => {
   .nav-header h1 {
     font-size: 1.35rem;
   }
-  
+
   .about-me-content {
     position: relative;
     right: 0;
     width: 100%;
     margin-top: 2rem;
+    max-height: none;
+    overflow-y: visible;
+    text-align: left;
+  }
+
+  .about-me-wrapper {
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-container {
+    padding: 0.75rem;
+  }
+
+  .particles-wrapper {
+    padding: 0.75rem;
+  }
+
+  .main-content {
+    height: calc(100vh - 1.5rem);
+  }
+
+  .nav-header h1 {
+    font-size: 1.15rem;
   }
 }
 

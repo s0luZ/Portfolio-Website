@@ -101,6 +101,7 @@ onBeforeUnmount(() => {
   display: flex;
   color: white;
   padding: 2rem;
+  overflow-x: hidden;
 }
 
 .main-content {
@@ -301,6 +302,14 @@ onBeforeUnmount(() => {
 }
 
 @media (max-width: 768px) {
+  .landing-container {
+    padding: 1rem;
+  }
+
+  .particles-wrapper {
+    padding: 1rem;
+  }
+
   .copyright {
     bottom: 0.5rem;
     left: 1rem;
@@ -313,8 +322,19 @@ onBeforeUnmount(() => {
 
   /* Fixed page size: main does not scroll */
   .main-content {
-    height: calc(100vh - 4rem);
+    height: calc(100vh - 2rem);
     overflow: hidden;
+  }
+
+  /* Keep glitter inside the main-content border on mobile (override 992px fixed/100vw) */
+  .particles-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    height: 100%;
   }
 
   /* Scroll lives here: nav (top) scrolls away when scrolling down, projects come into view */
@@ -335,6 +355,10 @@ onBeforeUnmount(() => {
     max-height: none;
   }
 
+  .about-me-wrapper {
+    padding-right: 1rem;
+  }
+
   .project-gallery {
     grid-template-columns: 1fr;
     gap: 1rem;
@@ -342,6 +366,24 @@ onBeforeUnmount(() => {
 
   .project-img {
     max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-container {
+    padding: 0.75rem;
+  }
+
+  .particles-wrapper {
+    padding: 0.75rem;
+  }
+
+  .main-content {
+    height: calc(100vh - 1.5rem);
+  }
+
+  .nav-header h1 {
+    font-size: 1.15rem;
   }
 }
 
