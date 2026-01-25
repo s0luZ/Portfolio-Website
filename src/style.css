@@ -73,6 +73,12 @@ button:focus-visible {
   padding: 2em;
 }
 
+@media (max-width: 768px) {
+  html {
+    overflow-x: hidden;
+  }
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

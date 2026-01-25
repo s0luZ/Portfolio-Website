@@ -79,16 +79,16 @@ onMounted(() => {
   display: flex;
   color: white;
   padding: 2rem;
+  overflow-x: hidden;
 }
 
 .main-content {
   flex: 12;
   position: relative;
   background-color: transparent;
-  border-radius: 0;
+  border-radius: 0px;
   overflow: hidden;
-  border: 2.5px solid rgba(255, 255, 255, 0.5);
-  height: calc(100vh - 4rem);
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
 }
 
 .particles-wrapper {
@@ -98,15 +98,11 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   padding: 1.5rem;
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  gap: 1.5rem;
 }
 
 .side-nav {
-  flex: 0 0 35%;
-  backdrop-filter: blur(0);
+  width: 35%;
+  backdrop-filter: blur(0px);
   border-radius: 24px;
   z-index: 2;
   display: flex;
@@ -156,31 +152,38 @@ onMounted(() => {
 }
 
 .about-me-content {
-  flex: 1;
-  min-width: 0;
-  min-height: 0;
-  overflow-y: auto;
+  float: right;
   text-align: right;
+  position: absolute;
   z-index: 2;
+  overflow-y: auto;
+  top: 1rem;
+  width: 40%;
+  max-height: calc(100vh - 4rem);
+  right: -2.2rem;
+  
 }
 
 .about-me-wrapper {
-  padding-right: 0;
-  padding-top: 2rem;
+  padding-right: 3.5rem;
+  padding-top: 7rem;
+  
 }
 
 .about-me-wrapper h2 {
   font-size: 1.35rem;
   font-weight: 600;
-  margin-bottom: 0;
+  margin-bottom: 0rem;
+  
 }
 
 .about-me-wrapper p {
-  margin: 0;
+  margin: 0rem 0;
   font-size: 0.95rem;
   line-height: 1.8;
   opacity: 0.9;
   margin-bottom: 2rem;
+  
 }
 
 .copyright {
@@ -194,6 +197,7 @@ onMounted(() => {
   pointer-events: none;
 }
 
+/* Custom scrollbar for about-me-content */
 .about-me-content::-webkit-scrollbar {
   width: 8px;
 }
@@ -212,6 +216,66 @@ onMounted(() => {
   background: rgba(255, 255, 255, 0.3);
 }
 
+@media (max-width: 768px) {
+  .landing-container {
+    padding: 1rem;
+  }
+
+  .particles-wrapper {
+    padding: 1rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .main-content {
+    height: calc(100vh - 2rem);
+    overflow: hidden;
+  }
+
+  .copyright {
+    bottom: 0.5rem;
+    left: 1rem;
+    font-size: 0.7rem;
+  }
+
+  .nav-header h1 {
+    font-size: 1.35rem;
+  }
+
+  .about-me-content {
+    position: relative;
+    right: 0;
+    width: 100%;
+    margin-top: 2rem;
+    max-height: none;
+    overflow-y: visible;
+    text-align: left;
+  }
+
+  .about-me-wrapper {
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-container {
+    padding: 0.75rem;
+  }
+
+  .particles-wrapper {
+    padding: 0.75rem;
+  }
+
+  .main-content {
+    height: calc(100vh - 1.5rem);
+  }
+
+  .nav-header h1 {
+    font-size: 1.15rem;
+  }
+}
+
+/* Transition styles */
 .fade-enter-active,
 .fade-leave-active {
   transition: all 2s ease;
