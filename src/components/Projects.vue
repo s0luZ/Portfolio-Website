@@ -14,7 +14,7 @@
           
           <ul class="nav-links">
             <li><router-link to="/" class="nav-link">Home</router-link></li>
-            <li><router-link to="/about" class="nav-link ">About me</router-link></li> 
+            <li><router-link to="/about" class="nav-link">About me</router-link></li> 
             <li><router-link to="/projects" class="nav-link active">Projects</router-link></li>
             <li><router-link to="/skills" class="nav-link">Skills & Tech Stack</router-link></li>
             <li><router-link to="/contacts" class="nav-link">Contacts</router-link></li>
@@ -43,7 +43,6 @@
       </div>
     </main>
 
-    <!-- Full-screen image lightbox -->
     <Teleport to="body">
       <Transition name="lightbox">
         <div v-if="lightboxSrc" class="lightbox-backdrop" @click.self="closeLightbox">
@@ -101,16 +100,16 @@ onBeforeUnmount(() => {
   display: flex;
   color: white;
   padding: 2rem;
-  overflow-x: hidden;
 }
 
 .main-content {
   flex: 12;
   position: relative;
   background-color: transparent;
-  border-radius: 0px;
+  border-radius: 0;
   overflow: hidden;
-  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border: 2.5px solid rgba(255, 255, 255, 0.5);
+  height: calc(100vh - 4rem);
 }
 
 .particles-bg {
@@ -131,11 +130,15 @@ onBeforeUnmount(() => {
   height: 100%;
   padding: 1.5rem;
   z-index: 2;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 1.5rem;
 }
 
 .side-nav {
-  width: 35%;
-  backdrop-filter: blur(0px);
+  flex: 0 0 35%;
+  backdrop-filter: blur(0);
   border-radius: 24px;
   z-index: 2;
   display: flex;
@@ -185,31 +188,27 @@ onBeforeUnmount(() => {
 }
 
 .about-me-content {
-  float: right;
-  text-align: right;
-  position: absolute;
-  z-index: 2;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
   overflow-y: auto;
-  top: 1rem;
-  width: 40%;
-  max-height: calc(100vh - 4rem);
-  right: -2.2rem;
-  
+  text-align: right;
+  z-index: 2;
 }
 
 .about-me-wrapper {
-  padding-right: 3.5rem;
-  padding-top: 7rem;
+  padding-right: 0;
+  padding-top: 2rem;
 }
 
 .about-me-wrapper h2 {
   font-size: 4.35rem;
   font-weight: 600;
-  margin-bottom: 0rem;
+  margin-bottom: 0;
 }
 
 .about-me-wrapper p {
-  margin: 0rem 0;
+  margin: 0;
   font-size: 2rem;
   line-height: 1.8;
   opacity: 0.9;
@@ -256,7 +255,6 @@ onBeforeUnmount(() => {
   pointer-events: none;
 }
 
-/* Custom scrollbar for about-me-content */
 .about-me-content::-webkit-scrollbar {
   width: 8px;
 }
@@ -275,119 +273,6 @@ onBeforeUnmount(() => {
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* Fixed glitter + transparent main from 992px down so glitter stays visible at lower resolutions */
-@media (max-width: 992px) {
-  .main-content {
-    background-color: transparent;
-  }
-
-  /* Border via ::after so it stays above the fixed particles-bg (z=0) and below content (z=2) */
-  .main-content::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border: 1.5px solid rgba(255, 255, 255, 0.5);
-    border-radius: inherit;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .particles-bg {
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 0;
-  }
-}
-
-@media (max-width: 768px) {
-  .landing-container {
-    padding: 1rem;
-  }
-
-  .particles-wrapper {
-    padding: 1rem;
-  }
-
-  .copyright {
-    bottom: 0.5rem;
-    left: 1rem;
-    font-size: 0.7rem;
-  }
-
-  .nav-header h1 {
-    font-size: 1.35rem;
-  }
-
-  /* Fixed page size: main does not scroll */
-  .main-content {
-    height: calc(100vh - 2rem);
-    overflow: hidden;
-  }
-
-  /* Keep glitter inside the main-content border on mobile (override 992px fixed/100vw) */
-  .particles-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: auto;
-    bottom: auto;
-    width: 100%;
-    height: 100%;
-  }
-
-  /* Scroll lives here: nav (top) scrolls away when scrolling down, projects come into view */
-  .particles-wrapper {
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .side-nav {
-    width: 100%;
-  }
-  
-  .about-me-content {
-    position: relative;
-    right: 0;
-    width: 100%;
-    margin-top: 2rem;
-    max-height: none;
-  }
-
-  .about-me-wrapper {
-    padding-right: 1rem;
-  }
-
-  .project-gallery {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .project-img {
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .landing-container {
-    padding: 0.75rem;
-  }
-
-  .particles-wrapper {
-    padding: 0.75rem;
-  }
-
-  .main-content {
-    height: calc(100vh - 1.5rem);
-  }
-
-  .nav-header h1 {
-    font-size: 1.15rem;
-  }
-}
-
-/* Transition styles */
 .fade-enter-active,
 .fade-leave-active {
   transition: all 2s ease;
@@ -405,7 +290,6 @@ onBeforeUnmount(() => {
   transform: translateX(0);
 }
 
-/* Full-screen lightbox */
 .lightbox-backdrop {
   position: fixed;
   inset: 0;

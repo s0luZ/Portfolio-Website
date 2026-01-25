@@ -59,9 +59,10 @@ onMounted(() => {
   flex: 12;
   position: relative;
   background-color: transparent;
-  border-radius: 0px;
+  border-radius: 0;
   overflow: hidden;
-  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border: 2.5px solid rgba(255, 255, 255, 0.5);
+  height: calc(100vh - 4rem);
 }
 
 .particles-wrapper {
@@ -75,7 +76,7 @@ onMounted(() => {
 
 .side-nav {
   width: 35%;
-  backdrop-filter: blur(0px);
+  backdrop-filter: blur(0);
   border-radius: 24px;
   z-index: 2;
   display: flex;
@@ -129,7 +130,7 @@ onMounted(() => {
   bottom: 2rem;
   right: 2rem;
   text-align: right;
-  backdrop-filter: blur(0px);
+  backdrop-filter: blur(0);
   border-radius: 16px;
 }
 
@@ -151,41 +152,6 @@ onMounted(() => {
   pointer-events: none;
 }
 
-@media (max-width: 768px) {
-  .landing-container {
-    padding: 1rem;
-  }
-
-  .particles-wrapper {
-    padding: 1rem;
-  }
-
-  .copyright {
-    bottom: 0.5rem;
-    left: 1rem;
-    font-size: 0.7rem;
-  }
-
-  .nav-header h1 {
-    font-size: 1.35rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .landing-container {
-    padding: 0.75rem;
-  }
-
-  .particles-wrapper {
-    padding: 0.75rem;
-  }
-
-  .nav-header h1 {
-    font-size: 1.15rem;
-  }
-}
-
-/* Transition styles */
 .fade-enter-active,
 .fade-leave-active {
   transition: all 2s ease;
