@@ -66,7 +66,7 @@
               </div>
 
               <br><br>
-              <p>Trackpro Tires</p>
+              <p>Trackpro Tires Branding Design</p>
 
               <p class="project-description">
                 Role: Graphics Designer
