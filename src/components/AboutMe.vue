@@ -250,11 +250,11 @@ onMounted(() => {
     margin-top: 2rem;
     max-height: none;
     overflow-y: visible;
-    text-align: left;
+    text-align: right;
   }
 
   .about-me-wrapper {
-    padding-right: 1rem;
+    padding-right: 0rem;
   }
 }
 

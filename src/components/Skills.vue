@@ -250,7 +250,7 @@ onMounted(() => {
   }
 
   .about-me-wrapper {
-    padding-right: 1rem;
+    padding-right: 0rem;
   }
 }
 
