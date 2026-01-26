@@ -104,7 +104,7 @@
     particles.setAttribute('color', new THREE.BufferAttribute(colors, 3));
     particles.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
   
-    const baseParticleSize = 0.08;
+    const baseParticleSize = 0.06;
     const material = new THREE.PointsMaterial({
       size: baseParticleSize * getGlitterSizeScale(window.innerWidth, window.innerHeight),
       sizeAttenuation: true,
@@ -138,7 +138,7 @@
     const pixelCount = w * h;
     const refPixels = 1920 * 1080;
     const scale = Math.sqrt(pixelCount / refPixels);
-    return Math.max(0.45, Math.min(1, scale));
+    return Math.max(0.45, Math.min(0.6, scale));
   }
   
   function handleResize() {

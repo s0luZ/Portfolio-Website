@@ -9,7 +9,7 @@
         <nav class="side-nav">
           <div class="nav-header">
             <h1>Isaiah Macaraeg</h1>
-            <p class="role">Frontend Developer</p>
+            <p class="role">Web Designer | Front-End Developer</p>
           </div>
           
           <ul class="nav-links">
@@ -27,7 +27,15 @@
               <p>
                 1st Choice Savings Client Booking Application Design and Development.
               </p>
-
+              <p class="project-description">
+                Role: UI/UX + Frontend Developer
+                <br>
+                Stack: Vue.js, Node.js, MySQL, Figma
+                <br>
+                Features: Booking flow, branch selection, admin scheduling
+                <br>
+                Focus: Accessibility + responsive layout
+              </p>
               <h3 class="project-section">Admin</h3>
               <div class="project-gallery">
                 <img v-for="(img, i) in adminImages" :key="'admin-' + i" :src="img" :alt="'1st Choice Admin screen ' + (i + 1)" class="project-img" @click="openLightbox(img)" />
@@ -152,8 +160,7 @@ onBeforeUnmount(() => {
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: -0.02em;
-  white-space: normal;
-  word-break: break-word;
+  white-space: nowrap;
 }
 
 .role {
@@ -161,6 +168,7 @@ onBeforeUnmount(() => {
   margin-top: 0.5rem;
   font-size: 1.05rem;
   font-weight: 400;
+  white-space: nowrap;
 }
 
 .nav-links {
@@ -177,6 +185,7 @@ onBeforeUnmount(() => {
   transition: opacity 0.3s ease;
   opacity: 0.7;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .nav-link:hover,
@@ -203,18 +212,24 @@ onBeforeUnmount(() => {
 }
 
 .about-me-wrapper h2 {
-  font-size: 4.35rem;
+  font-size: 3.35rem;
   font-weight: 600;
   margin-bottom: 0rem;
 }
 
 .about-me-wrapper p {
   margin: 0rem 0;
-  font-size: 2rem;
+  font-size: 1.5rem;
   line-height: 1.8;
   opacity: 0.9;
   margin-bottom: 2rem;
 }
+
+.about-me-wrapper p.project-description {
+  font-size: 0.95rem;
+}
+
+
 
 .project-section {
   font-size: 2rem;

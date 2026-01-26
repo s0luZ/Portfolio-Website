@@ -7,7 +7,7 @@
         <nav class="side-nav">
           <div class="nav-header">
             <h1>Isaiah Macaraeg</h1>
-            <p class="role">Frontend Developer</p>
+            <p class="role">Web Designer | Front-End Developer</p>
           </div>
           
           <ul class="nav-links">
@@ -92,8 +92,7 @@ onMounted(() => {
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: -0.02em;
-  white-space: normal;
-  word-break: break-word;
+  white-space: nowrap;
 }
 
 .role {
@@ -101,6 +100,7 @@ onMounted(() => {
   margin-top: 0.5rem;
   font-size: 1.05rem;
   font-weight: 400;
+  white-space: nowrap;
 }
 
 .nav-links {
@@ -117,6 +117,7 @@ onMounted(() => {
   transition: opacity 0.3s ease;
   opacity: 0.7;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .nav-link:hover,
@@ -130,7 +131,7 @@ onMounted(() => {
   right: 2rem;
   text-align: right;
   backdrop-filter: blur(0px);
-  border-radius: 16px;
+  border-radius: px;
 }
 
 .personal-info p {
@@ -169,6 +170,12 @@ onMounted(() => {
   .nav-header h1 {
     font-size: 1.35rem;
   }
+
+  .personal-info {
+    right: 1rem;
+    bottom: 1rem;
+    max-width: calc(100% - 2rem);
+  }
 }
 
 @media (max-width: 480px) {
@@ -182,6 +189,12 @@ onMounted(() => {
 
   .nav-header h1 {
     font-size: 1.15rem;
+  }
+
+  .personal-info {
+    right: 0.75rem;
+    bottom: 0.75rem;
+    max-width: calc(100% - 1.5rem);
   }
 }
 
