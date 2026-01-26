@@ -24,6 +24,8 @@
           <div v-show="showContent" class="about-me-content">
             <div class="about-me-wrapper">
               <h2>Projects</h2>
+              <br>
+
               <p>
                 1st Choice Savings Client Booking Application Design and Development.
               </p>
@@ -45,6 +47,45 @@
               <div class="project-gallery">
                 <img v-for="(img, i) in userImages" :key="'user-' + i" :src="img" :alt="'1st Choice User screen ' + (i + 1)" class="project-img" @click="openLightbox(img)" />
               </div>
+
+              <br><br>
+              <p>Veltrix Shipping Company Homepage Design</p>
+
+              <p class="project-description">
+                Role: UI/UX + Frontend Developer
+                <br>
+                Stack: Figma
+                <br>
+                Features: Booking, Comany Information, Services, Contact Us
+                <br>
+                Focus: Accessibility + responsive layout
+              </p>
+
+              <div class="project-gallery veltrix-gallery">
+                <img :src="veltrixImage" alt="Veltrix shipping company homepage" class="project-img veltrix-img" @click="openLightbox(veltrixImage)" />
+              </div>
+
+              <br><br>
+              <p>Trackpro Tires</p>
+
+              <p class="project-description">
+                Role: Graphics Designer
+                <br>
+                Stack: Adobe Photoshop and Illustrator
+                <br>
+                Features: Minimalistic, premium branding
+              </p>
+
+              <h3 class="project-section">Logo</h3>
+              <div class="project-gallery trackpro-gallery">
+                <img v-for="(img, i) in trackproLogoImages" :key="'logo-' + i" :src="img.src" :alt="img.alt" class="project-img" @click="openLightbox(img.src)" />
+              </div>
+
+              <h3 class="project-section">Calling Card</h3>
+              <div class="project-gallery trackpro-gallery">
+                <img v-for="(img, i) in trackproCallingCardImages" :key="'callingcard-' + i" :src="img.src" :alt="img.alt" class="project-img" @click="openLightbox(img.src)" />
+              </div>
+
             </div>
           </div>
         </Transition>
@@ -76,9 +117,36 @@ import user3 from '../assets/1st Choice/User/3.png';
 import user4 from '../assets/1st Choice/User/4.png';
 import user5 from '../assets/1st Choice/User/5.png';
 import user6 from '../assets/1st Choice/User/6.png';
+import veltrixImage from '../assets/Veltrix/Veltrix.png';
+
+// Trackpro Tires - Logo images
+import tpRectBlackJpg from '../assets/Track Pro Tires/Logo/TP Rect Black.jpg';
+import tpRectWhiteJpg from '../assets/Track Pro Tires/Logo/TP Rect White.jpg';
+import tpSquareBlackJpg from '../assets/Track Pro Tires/Logo/TP Square Black.jpg';
+import tpSquareWhiteJpg from '../assets/Track Pro Tires/Logo/TP Square White.jpg';
+
+// Trackpro Tires - Calling Card images
+import ccBackWhite from '../assets/Track Pro Tires/Calling Card/CC Back White.jpg';
+import ccBack from '../assets/Track Pro Tires/Calling Card/CC Back.jpg';
+import ccFrontWhite from '../assets/Track Pro Tires/Calling Card/CC Front White.jpg';
+import ccFront from '../assets/Track Pro Tires/Calling Card/CC Front.jpg';
 
 const adminImages = [admin101, admin102, admin103];
 const userImages = [user1, user2, user3, user4, user5, user6];
+
+const trackproLogoImages = [
+  { src: tpRectBlackJpg, alt: 'Trackpro Tires Logo - Rectangle Black' },
+  { src: tpRectWhiteJpg, alt: 'Trackpro Tires Logo - Rectangle White' },
+  { src: tpSquareBlackJpg, alt: 'Trackpro Tires Logo - Square Black' },
+  { src: tpSquareWhiteJpg, alt: 'Trackpro Tires Logo - Square White' }
+];
+
+const trackproCallingCardImages = [
+  { src: ccBackWhite, alt: 'Trackpro Tires Calling Card - Back White' },
+  { src: ccBack, alt: 'Trackpro Tires Calling Card - Back' },
+  { src: ccFrontWhite, alt: 'Trackpro Tires Calling Card - Front White' },
+  { src: ccFront, alt: 'Trackpro Tires Calling Card - Front' }
+];
 
 const showContent = ref(false);
 const lightboxSrc = ref(null);
@@ -229,6 +297,32 @@ onBeforeUnmount(() => {
   font-size: 0.95rem;
 }
 
+.veltrix-description {
+  font-size: 1.2rem !important;
+}
+
+.veltrix-gallery {
+  grid-template-columns: 1fr;
+  max-width: 100%;
+  justify-items: end;
+}
+
+.veltrix-gallery {
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: flex-start !important;
+  margin-left: auto;
+  width: 100%;
+  grid-template-columns: none !important;
+}
+
+.veltrix-img {
+  max-width: 600px !important;
+  width: auto !important;
+  margin-left: auto !important;
+  display: block;
+}
+
 
 
 .project-section {
@@ -243,6 +337,12 @@ onBeforeUnmount(() => {
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 1rem;
   margin-bottom: 0.5rem;
+  justify-items: end;
+  align-items: flex-end;
+}
+
+.trackpro-gallery {
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .project-img {
