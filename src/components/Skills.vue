@@ -7,7 +7,7 @@
         <nav class="side-nav">
           <div class="nav-header">
             <h1>Isaiah Macaraeg</h1>
-            <p class="role">Web Designer | Front-End Developer</p>
+            <p class="role">Web Designer | Software Developer</p>
           </div>
 
           <ul class="nav-links">
@@ -92,6 +92,7 @@ onMounted(() => {
   z-index: 2;
   display: flex;
   flex-direction: column;
+  margin: 20px;
 }
 
 .nav-header {
@@ -99,6 +100,8 @@ onMounted(() => {
 }
 
 .nav-header h1 {
+  display: flex;
+  flex-direction: column;
   font-size: clamp(1.5rem, 4.5vw + 1.25rem, 3rem);
   margin: 0;
   font-weight: 600;

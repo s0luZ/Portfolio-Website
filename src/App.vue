@@ -8,7 +8,7 @@
 
 <style>
 #app {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 body {

@@ -1,5 +1,4 @@
-/* Import Quicksand font */
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+/* Raleway is loaded from index.html (earlier than bundled CSS). */
 
 * {
   margin: 0;
@@ -13,11 +12,12 @@
   --text-primary: #ffffff;
   --text-secondary: #8b8f98;
   --accent-color: #4a90e2;
-  --font-primary: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-primary: 'Raleway', sans-serif;
 }
 
 html, body {
   font-family: var(--font-primary);
+  font-weight: 200; /* Raleway Extra Light */
   background-color: var(--primary-bg);
   color: var(--text-primary);
   line-height: 1.6;
@@ -29,6 +29,18 @@ html, body {
   min-height: 100vh;
   width: 100%;
   background-color: var(--primary-bg);
+  font-weight: 200;
+}
+
+/* All headings: Raleway Light (300); #app needed to win over scoped Vue rules. */
+#app h1,
+#app h2,
+#app h3,
+#app h4,
+#app h5,
+#app h6 {
+  font-family: var(--font-primary);
+  font-weight: 300;
 }
 
 a {
@@ -39,11 +51,6 @@ a {
 
 a:hover {
   opacity: 0.8;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-primary);
-  font-weight: 500;
 }
 
 button {
