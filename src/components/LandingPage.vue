@@ -79,7 +79,6 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   gap: var(--nav-block-to-links-gap);
-  gap
   margin: 0;
 }
 
