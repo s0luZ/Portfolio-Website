@@ -38,7 +38,7 @@ function density(nx, nz) {
 function build(container) {
   const {w:cw, h:ch} = sz(container);
   scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x000000);
+  scene.background = new THREE.Color(0x0a0a0a);
   camera = new THREE.PerspectiveCamera(72, cw/ch, 0.1, 1000);
   camera.position.set(0, 42, 0);
   camera.lookAt(0, 0, 0);
@@ -74,11 +74,11 @@ function build(container) {
     jx[i] = Math.random()*Math.PI*2;
     jz[i] = Math.random()*Math.PI*2;
     jy[i] = Math.random()*Math.PI*2;
-    const b = Math.pow(den, 0.4) * (0.3 + Math.random()*0.7);
-    const rng = Math.random()*0.06;
-    col[i*3]   = b*(0.87+rng);
-    col[i*3+1] = b*(0.89+rng*0.6);
-    col[i*3+2] = b*(0.95+rng*0.3);
+    const b = Math.pow(den, 0.4) * (0.3 + Math.random() * 0.7);
+    const rng = Math.random() * 0.06;
+    col[i*3]   = b * (0.87 + rng);
+    col[i*3+1] = b * (0.89 + rng * 0.6);
+    col[i*3+2] = b * (0.95 + rng * 0.3);
     placed++;
   }
   for (let i=placed; i<N; i++) {
@@ -86,7 +86,9 @@ function build(container) {
     base[i*3]=x; base[i*3+1]=0; base[i*3+2]=z;
     pos[i*3]=x;  pos[i*3+1]=0;  pos[i*3+2]=z;
     jx[i]=Math.random()*Math.PI*2; jz[i]=Math.random()*Math.PI*2; jy[i]=Math.random()*Math.PI*2;
-    col[i*3]=0.012; col[i*3+1]=0.012; col[i*3+2]=0.015;
+    col[i*3] = 0.012;
+    col[i*3+1] = 0.012;
+    col[i*3+2] = 0.015;
   }
 
   geo = new THREE.BufferGeometry();
@@ -94,7 +96,7 @@ function build(container) {
   geo.setAttribute('color',    new THREE.BufferAttribute(col, 3));
   mat = new THREE.PointsMaterial({
     size: 0.048*grain(cw,ch), sizeAttenuation:true, transparent:true,
-    opacity:0.7, vertexColors:true, blending:THREE.AdditiveBlending, depthWrite:false
+    opacity: 0.42, vertexColors:true, blending:THREE.AdditiveBlending, depthWrite:false
   });
   const cloud = new THREE.Points(geo, mat);
   cloud.userData = { base, jx, jy, jz, N };

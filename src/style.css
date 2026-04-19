@@ -7,12 +7,27 @@
 }
 
 :root {
-  --primary-bg: #000000;
+  /* Keita-style shell: near-black canvas outside the framed window */
+  --primary-bg: #0a0a0a;
   --secondary-bg: rgba(15, 25, 45, 0.8);
   --text-primary: #ffffff;
   --text-secondary: #8b8f98;
   --accent-color: #4a90e2;
   --font-primary: 'Raleway', sans-serif;
+  /* Viewport gutter — must match App.vue wave inset and .landing-container padding */
+  --page-frame-inset: clamp(1.75rem, 4vw, 2.75rem);
+  /* Thin inner frame (reference: subtle 1px hairline) */
+  /* ~Keita: visible 1px hairline on near-black (was 0.14 — too faint on some displays) */
+  --frame-border: 1px solid rgba(255, 255, 255, 0.4);
+  /* Space from hairline border to content (reference: ~28–40px) */
+  --frame-inner-padding: clamp(1.65rem, 3.5vw, 2.5rem);
+  /* Tight stack: name → subtitle */
+  --nav-title-sub-gap: 0.28rem;
+  /* Large pause before link list (reference: generous vertical rhythm) */
+  --nav-block-to-links-gap: clamp(2.35rem, 7.5vh, 4.25rem);
+  --nav-link-spacing: 0.34rem;
+  /* Corner blocks (bio, copyright) inset from inner border */
+  --corner-content-inset: clamp(1.65rem, 3.5vw, 2.5rem);
 }
 
 html, body {
@@ -81,8 +96,24 @@ button:focus-visible {
 }
 
 @media (max-width: 768px) {
+  :root {
+    --page-frame-inset: 1rem;
+    --frame-inner-padding: clamp(1.05rem, 3.5vw, 1.45rem);
+    --corner-content-inset: clamp(1.05rem, 3.5vw, 1.45rem);
+    --nav-block-to-links-gap: clamp(1.85rem, 6vh, 3rem);
+  }
+
   html {
     overflow-x: hidden;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --page-frame-inset: 0.75rem;
+    --frame-inner-padding: clamp(0.95rem, 3vw, 1.25rem);
+    --corner-content-inset: clamp(0.95rem, 3vw, 1.25rem);
+    --nav-block-to-links-gap: clamp(1.6rem, 5.5vh, 2.65rem);
   }
 }
 

@@ -3,7 +3,6 @@
     <main class="main-content">
       <p class="copyright">&#169; 2025 Isaiah Macaraeg</p>
       <div class="particles-wrapper">
-        <WaveParticles />
         <nav class="side-nav">
           <div class="nav-header">
             <h1>Isaiah Macaraeg</h1>
@@ -46,7 +45,6 @@
 </template>
 
 <script setup>
-import WaveParticles from './Three.js/WaveParticles.vue';
 import { ref, onMounted } from 'vue';
 
 const showContent = ref(false);
@@ -62,7 +60,7 @@ onMounted(() => {
   width: 100%;
   display: flex;
   color: white;
-  padding: 2rem;
+  padding: var(--page-frame-inset);
   overflow-x: hidden;
 }
 
@@ -72,7 +70,7 @@ onMounted(() => {
   background-color: transparent;
   border-radius: 0;
   overflow: hidden;
-  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border: var(--frame-border);
 }
 
 .particles-wrapper {
@@ -81,37 +79,38 @@ onMounted(() => {
   left: 0;
   width: 100%;
   height: 100%;
-  padding: 1.5rem;
+  padding: var(--frame-inner-padding);
 }
 
 .side-nav {
   width: 35%;
   backdrop-filter: blur(0);
-  border-radius: 24px;
+  border-radius: 0;
   z-index: 2;
   display: flex;
   flex-direction: column;
-  margin: 20px;
+  gap: var(--nav-block-to-links-gap);
+  margin: 0;
 }
 
 .nav-header {
-  margin-bottom: 2rem;
+  margin-bottom: 0;
 }
 
 .nav-header h1 {
   display: flex;
   flex-direction: column;
-  font-size: clamp(1.5rem, 4.5vw + 1.25rem, 3rem);
+  font-size: clamp(2rem, 5.5vw + 1rem, 3.35rem);
   margin: 0;
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.15;
   letter-spacing: -0.02em;
   white-space: nowrap;
 }
 
 .role {
   color: #8b8f98;
-  margin-top: 0.5rem;
+  margin-top: var(--nav-title-sub-gap);
   font-size: 1.05rem;
   font-weight: 400;
   white-space: nowrap;
@@ -121,7 +120,9 @@ onMounted(() => {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: var(--nav-link-spacing);
+  margin: 0;
+  padding: 0;
 }
 
 .nav-link {
@@ -210,11 +211,11 @@ onMounted(() => {
 
 .copyright {
   position: absolute;
-  bottom: 1rem;
-  left: 2rem;
+  bottom: var(--corner-content-inset);
+  left: var(--corner-content-inset);
   color: #ffffff;
-  font-size: 0.9rem;
-  opacity: 0.5;
+  font-size: 0.8rem;
+  opacity: 0.45;
   z-index: 10;
   pointer-events: none;
 }
@@ -238,32 +239,42 @@ onMounted(() => {
 }
 
 @media (max-width: 768px) {
-  .landing-container {
-    padding: 1rem;
-  }
-
   .particles-wrapper {
-    padding: 1rem;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
 
   .main-content {
-    height: calc(100vh - 2rem);
+    height: calc(100vh - 2 * var(--page-frame-inset));
     overflow: hidden;
   }
 
   .copyright {
-    bottom: 0.5rem;
-    left: 1rem;
-    font-size: 0.7rem;
+    font-size: 0.72rem;
+  }
+
+  .side-nav {
+    width: 100%;
+    margin: 0;
   }
 
   .nav-header h1 {
-    font-size: 1.35rem;
+    font-size: clamp(2rem, 9vw + 0.5rem, 2.85rem);
+    white-space: normal;
+    max-width: 100%;
+  }
+
+  .role {
+    font-size: 0.95rem;
+    white-space: normal;
+  }
+
+  .nav-link {
+    font-size: 1rem;
   }
 
   .about-me-content {
+    float: none;
     position: relative;
     right: 0;
     width: 100%;
@@ -274,6 +285,11 @@ onMounted(() => {
 
   .about-me-wrapper {
     padding-right: 0rem;
+    padding-top: 1.5rem;
+  }
+
+  .about-me-wrapper h2 {
+    font-size: clamp(1.35rem, 4vw + 0.5rem, 1.85rem);
   }
 
   .contact-list li {
@@ -283,20 +299,20 @@ onMounted(() => {
 }
 
 @media (max-width: 480px) {
-  .landing-container {
-    padding: 0.75rem;
-  }
-
-  .particles-wrapper {
-    padding: 0.75rem;
-  }
-
   .main-content {
-    height: calc(100vh - 1.5rem);
+    height: calc(100vh - 2 * var(--page-frame-inset));
   }
 
   .nav-header h1 {
-    font-size: 1.15rem;
+    font-size: clamp(1.85rem, 8vw + 0.45rem, 2.55rem);
+  }
+
+  .role {
+    font-size: 0.9rem;
+  }
+
+  .nav-link {
+    font-size: 0.95rem;
   }
 }
 
