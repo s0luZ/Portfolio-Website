@@ -1,8 +1,12 @@
+# After pushing: GitHub → Settings → Pages → Build and deployment → Source:
+# choose "GitHub Actions". If Source is "Deploy from a branch", GitHub serves
+# raw repo files (not Vite's dist/), so /src/main.js 404s and the site stays blank.
 name: Deploy to GitHub Pages
 
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
