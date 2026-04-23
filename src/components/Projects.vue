@@ -18,14 +18,44 @@
           </ul>
         </nav>
         <Transition name="fade" appear>
-          <div v-show="showContent" class="about-me-content">
+          <div v-show="showContent" class="about-me-content projects-page-content">
             <div class="about-me-wrapper">
-              <h2>Projects</h2>
               <br>
+              <ul class="main-project-list" role="list">
+                <li v-for="p in mainProjects" :key="p.id" class="main-project-item">
+                  <button
+                    type="button"
+                    class="main-project-trigger"
+                    :class="{ 'main-project-trigger--single-line': p.id === 'trackpro' }"
+                    @click="openProjectModal(p.id)"
+                  >
+                    {{ p.title }}
+                  </button>
+                </li>
+              </ul>
 
-              <p>
-                1st Choice Savings Client Booking Application Design and Development.
-              </p>
+            </div>
+          </div>
+        </Transition>
+      </div>
+    </main>
+
+    <!-- Project details modal -->
+    <Teleport to="body">
+      <Transition name="project-modal">
+        <div
+          v-if="projectModalId"
+          class="project-modal-backdrop"
+          role="dialog"
+          aria-modal="true"
+          :aria-labelledby="projectModalTitleId"
+          @click.self="closeProjectModal"
+        >
+          <div class="project-modal-panel">
+            <button type="button" class="project-modal-close" aria-label="Close project details" @click="closeProjectModal">×</button>
+
+            <div v-if="projectModalId === 'first-choice'" :id="projectModalTitleId" class="project-modal-body">
+              <h3 class="project-modal-heading">1st Choice Savings Client Booking Application Design and Development.</h3>
               <p class="project-description">
                 Role: UI/UX + Frontend Developer
                 <br>
@@ -35,19 +65,18 @@
                 <br>
                 Focus: Accessibility + responsive layout
               </p>
-              <h3 class="project-section">Admin</h3>
-              <div class="project-gallery">
+              <h4 class="project-section">Admin</h4>
+              <div class="project-gallery modal-gallery">
                 <img v-for="(img, i) in adminImages" :key="'admin-' + i" :src="img" :alt="'1st Choice Admin screen ' + (i + 1)" class="project-img" @click="openLightbox(img)" />
               </div>
-
-              <h3 class="project-section">User</h3>
-              <div class="project-gallery">
+              <h4 class="project-section">User</h4>
+              <div class="project-gallery modal-gallery">
                 <img v-for="(img, i) in userImages" :key="'user-' + i" :src="img" :alt="'1st Choice User screen ' + (i + 1)" class="project-img" @click="openLightbox(img)" />
               </div>
+            </div>
 
-              <br><br>
-              <p>Veltrix Shipping Company Homepage Design</p>
-
+            <div v-else-if="projectModalId === 'veltrix'" :id="projectModalTitleId" class="project-modal-body">
+              <h3 class="project-modal-heading">Veltrix Shipping Company Homepage Design</h3>
               <p class="project-description">
                 Role: UI/UX + Frontend Developer
                 <br>
@@ -57,14 +86,13 @@
                 <br>
                 Focus: Accessibility + responsive layout
               </p>
-
-              <div class="project-gallery veltrix-gallery">
+              <div class="project-gallery veltrix-gallery modal-gallery">
                 <img :src="veltrixImage" alt="Veltrix shipping company homepage" class="project-img veltrix-img" @click="openLightbox(veltrixImage)" />
               </div>
+            </div>
 
-              <br><br>
-              <p>Trackpro Tires Branding Design</p>
-
+            <div v-else-if="projectModalId === 'trackpro'" :id="projectModalTitleId" class="project-modal-body">
+              <h3 class="project-modal-heading">Trackpro Tires Branding Design</h3>
               <p class="project-description">
                 Role: Graphics Designer
                 <br>
@@ -72,22 +100,19 @@
                 <br>
                 Features: Minimalistic, premium branding
               </p>
-
-              <h3 class="project-section">Logo</h3>
-              <div class="project-gallery trackpro-gallery">
+              <h4 class="project-section">Logo</h4>
+              <div class="project-gallery trackpro-gallery modal-gallery">
                 <img v-for="(img, i) in trackproLogoImages" :key="'logo-' + i" :src="img.src" :alt="img.alt" class="project-img" @click="openLightbox(img.src)" />
               </div>
-
-              <h3 class="project-section">Calling Card</h3>
-              <div class="project-gallery trackpro-gallery">
+              <h4 class="project-section">Calling Card</h4>
+              <div class="project-gallery trackpro-gallery modal-gallery">
                 <img v-for="(img, i) in trackproCallingCardImages" :key="'callingcard-' + i" :src="img.src" :alt="img.alt" class="project-img" @click="openLightbox(img.src)" />
               </div>
-
             </div>
           </div>
-        </Transition>
-      </div>
-    </main>
+        </div>
+      </Transition>
+    </Teleport>
 
     <!-- Full-screen image lightbox -->
     <Teleport to="body">
@@ -144,8 +169,37 @@ const trackproCallingCardImages = [
   { src: ccFront, alt: 'Trackpro Tires Calling Card - Front' }
 ];
 
+const mainProjects = [
+  {
+    id: 'first-choice',
+    title: '1st Choice Savings Client Booking Application Design and Development.'
+  },
+  {
+    id: 'veltrix',
+    title: 'Veltrix Shipping Company Homepage Design'
+  },
+  {
+    id: 'trackpro',
+    title: 'Trackpro Tires Branding Design'
+  }
+];
+
 const showContent = ref(false);
 const lightboxSrc = ref(null);
+const projectModalId = ref(null);
+const projectModalTitleId = 'project-modal-title';
+
+function openProjectModal(id) {
+  projectModalId.value = id;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeProjectModal() {
+  projectModalId.value = null;
+  if (!lightboxSrc.value) {
+    document.body.style.overflow = '';
+  }
+}
 
 function openLightbox(src) {
   lightboxSrc.value = src;
@@ -154,7 +208,9 @@ function openLightbox(src) {
 
 function closeLightbox() {
   lightboxSrc.value = null;
-  document.body.style.overflow = '';
+  if (!projectModalId.value) {
+    document.body.style.overflow = '';
+  }
 }
 
 onMounted(() => {
@@ -266,6 +322,22 @@ onBeforeUnmount(() => {
   
 }
 
+/* Use space from nav (35%) to frame edge — avoids a narrow 40% strip on the far right */
+.about-me-content.projects-page-content {
+  float: none;
+  width: auto;
+  left: calc(35% + clamp(1rem, 2.5vw, 2.25rem));
+  right: clamp(0.5rem, 1.5vw, 2rem);
+  overflow-x: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.projects-page-content .about-me-wrapper {
+  padding-right: clamp(1rem, 2.5vw, 2rem);
+  padding-top: 7rem;
+}
+
 .about-me-wrapper {
   padding-right: 3.5rem;
   padding-top: 7rem;
@@ -287,6 +359,56 @@ onBeforeUnmount(() => {
 
 .about-me-wrapper p.project-description {
   font-size: 0.95rem;
+}
+
+.main-project-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: flex-end;
+}
+
+.main-project-item {
+  width: 100%;
+  max-width: 100%;
+}
+
+.main-project-trigger {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0.2rem 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-family: var(--font-primary);
+  font-size: clamp(1.92rem, 5.35vw + 0.92rem, 3.15rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.18;
+  text-align: right;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: opacity 0.25s ease;
+}
+
+.main-project-trigger:hover {
+  opacity: 0.5;
+}
+
+.main-project-trigger:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.65);
+  outline-offset: 4px;
+  opacity: 1;
+}
+
+@media (min-width: 769px) {
+  .main-project-trigger--single-line {
+    white-space: nowrap;
+  }
 }
 
 .veltrix-description {
@@ -447,6 +569,12 @@ onBeforeUnmount(() => {
     max-height: none;
   }
 
+  .about-me-content.projects-page-content {
+    left: auto;
+    right: auto;
+    overflow-x: hidden;
+  }
+
   .about-me-wrapper {
     padding-right: 0rem;
     padding-top: 1.5rem;
@@ -468,6 +596,11 @@ onBeforeUnmount(() => {
   .project-img {
     max-width: 100%;
   }
+
+  .main-project-trigger {
+    font-size: clamp(1.88rem, 8.5vw + 0.48rem, 2.75rem);
+    line-height: 1.16;
+  }
 }
 
 @media (max-width: 480px) {
@@ -485,6 +618,11 @@ onBeforeUnmount(() => {
 
   .nav-link {
     font-size: 0.95rem;
+  }
+
+  .main-project-trigger {
+    font-size: clamp(1.75rem, 7.5vw + 0.42rem, 2.45rem);
+    line-height: 1.15;
   }
 }
 
@@ -559,5 +697,191 @@ onBeforeUnmount(() => {
 .lightbox-enter-to,
 .lightbox-leave-from {
   opacity: 1;
+}
+
+/* Project detail modal */
+.project-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.project-modal-panel {
+  position: relative;
+  width: min(720px, 100%);
+  max-height: min(90vh, 900px);
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 1.75rem 1.75rem 1.5rem;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45);
+}
+
+.project-modal-panel::-webkit-scrollbar {
+  width: 8px;
+}
+
+.project-modal-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.project-modal-panel::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+}
+
+.project-modal-panel::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.project-modal-panel {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.16) transparent;
+}
+
+.project-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 0.2s ease;
+  z-index: 5;
+}
+
+.project-modal-close:hover {
+  opacity: 0.95;
+}
+
+.project-modal-body {
+  text-align: right;
+  padding-top: 0.35rem;
+  padding-right: 2.5rem;
+}
+
+.project-modal-body .veltrix-gallery {
+  display: block !important;
+  width: 100%;
+}
+
+.project-modal-body .veltrix-img {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  object-fit: contain;
+}
+
+.project-modal-heading {
+  font-family: var(--font-primary);
+  font-size: 1.22rem;
+  font-weight: 300;
+  line-height: 1.45;
+  margin: 0 0 1rem;
+  opacity: 0.98;
+}
+
+.project-modal-body .project-description {
+  text-align: right;
+  margin-bottom: 1.25rem;
+}
+
+.project-modal-body .project-section {
+  margin-top: 1.25rem;
+}
+
+.modal-gallery {
+  margin-bottom: 0.75rem;
+}
+
+.project-modal-enter-active,
+.project-modal-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+.project-modal-enter-active .project-modal-panel,
+.project-modal-leave-active .project-modal-panel {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.project-modal-enter-from,
+.project-modal-leave-to {
+  opacity: 0;
+}
+
+.project-modal-enter-from .project-modal-panel,
+.project-modal-leave-to .project-modal-panel {
+  opacity: 0;
+  transform: translateY(10px) scale(0.98);
+}
+
+.project-modal-enter-to,
+.project-modal-leave-from {
+  opacity: 1;
+}
+
+.project-modal-enter-to .project-modal-panel,
+.project-modal-leave-from .project-modal-panel {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+@media (max-width: 768px) {
+  .project-modal-backdrop {
+    padding: 0.75rem;
+  }
+
+  .project-modal-panel {
+    width: 100%;
+    max-height: 92vh;
+    padding: 1.15rem 0.95rem 1rem;
+    border-radius: 10px;
+  }
+
+  .project-modal-close {
+    top: 0.45rem;
+    right: 0.45rem;
+    width: 2.35rem;
+    height: 2.35rem;
+    font-size: 1.9rem;
+    background: rgba(0, 0, 0, 0.32);
+    border-radius: 999px;
+    opacity: 0.82;
+  }
+
+  .project-modal-body {
+    padding-top: 1.35rem;
+    padding-right: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-modal-backdrop {
+    padding: 0.4rem;
+  }
+
+  .project-modal-panel {
+    padding: 0.95rem 0.75rem 0.9rem;
+  }
+
+  .project-modal-body {
+    padding-top: 1.4rem;
+    padding-right: 0.55rem;
+  }
 }
 </style>

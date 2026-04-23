@@ -97,7 +97,7 @@ button:focus-visible {
 
 @media (max-width: 768px) {
   :root {
-    --page-frame-inset: 1rem;
+    --page-frame-inset: clamp(1.35rem, 5.5vw, 2rem);
     --frame-inner-padding: clamp(1.05rem, 3.5vw, 1.45rem);
     --corner-content-inset: clamp(1.05rem, 3.5vw, 1.45rem);
     --nav-block-to-links-gap: clamp(1.85rem, 6vh, 3rem);
@@ -110,7 +110,7 @@ button:focus-visible {
 
 @media (max-width: 480px) {
   :root {
-    --page-frame-inset: 0.75rem;
+    --page-frame-inset: clamp(1.25rem, 5vw, 1.85rem);
     --frame-inner-padding: clamp(0.95rem, 3vw, 1.25rem);
     --corner-content-inset: clamp(0.95rem, 3vw, 1.25rem);
     --nav-block-to-links-gap: clamp(1.6rem, 5.5vh, 2.65rem);

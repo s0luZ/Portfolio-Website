@@ -20,37 +20,13 @@
         <Transition name="fade" appear>
           <div v-show="showContent" class="about-me-content">
             <div class="about-me-wrapper">
-              <h2>About Me</h2>
-              <p>
-                Hey! I'm a fresh graduate IT student at Lethbridge Polytechnic with a background in Electronics Engineering and a passion 
-                for building and understanding computers. I moved to Canada to study Computer Information Technology (CIT), 
-                where I balance work, school, and life as an international student.
-              </p>
-
-              <h2>My Passion for Frontend Development</h2>
-              <p>I love creating engaging, interactive experiences that blend design and functionality. 
-                My focus is on UI/UX and interactive design, where I bring ideas to life with smooth transitions and eye-catching visuals. 
-                One of my key projects is the 1st Choice Savings Client Booking App, where I helped improve the user 
-                experience through thoughtful design and development.
-              </p>
-
-              <h2>Skills & Tools</h2>
-              <p>Frontend Technologies: Vue.js, React.js, Three.js, HTML, CSS <br>
-                Design Tools: Figma (UI/UX), Adobe Photoshop, Adobe Illustrator, Adobe After Effects, Adobe Premiere Pro <br>
-                Experience: Coursework, hands-on projects, and continuous learning
-              </p>
-
-              <h2>Beyond Coding</h2>
-              <p>
-                When I'm not coding, I'm capturing moments through photography and videography, or diving into car culture and music.
-                I also love playing games and watching movies.
-                
-              </p>
-
-              <h2>What's Next?</h2>
-              <p>
-                I see myself working as a junior web developer specializing in user interface and user experience design.
-              </p>
+              
+              I’m an IT diploma graduate from Lethbridge Polytechnic with a background in Electronics Engineering and a passion for technology, design, and problem-solving. I moved to Canada as an international student to study Computer Information Technology (CIT), where I balanced academics, work, and personal growth.
+              <br><br>
+              I am currently employed at SFT as a Software Developer, focusing on frontend development and user experience. I enjoy creating interactive and visually engaging applications using Vue.js, React.js, HTML, CSS, and design tools like Figma and Adobe Creative Suite.
+              <br><br>
+              I’m also expanding my skills in Autodesk Fusion 360 and 3D design for IoT applications as part of my current project work. Outside of technology, I enjoy photography, videography, gaming, and car culture.
+              <br>
 
             </div>
           </div>
